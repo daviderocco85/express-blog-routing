@@ -1,10 +1,11 @@
 import express from 'express';
+import { postsList } from '../data/postsList.js';
 
 export const posts = express.Router();
 
-// Index di tutti gli articoli 
+// Index che restituisce la lista di tutti gli articoli in formato JSON 
 posts.get('/', (req, res) => {
-    res.send(`Lista degli articoli del blog`);
+    res.json(postsList);
 });
 
 // Show dell'articolo con specifico id
