@@ -14,7 +14,8 @@ posts.get('/:id', (req, res) => {
     const post = postsList.find(p => p.id === id);
 
     if (!post) {
-        return res.status(404).json({ error: `Post ${id} not found` });
+        res.status(404).json({ error: `Post ${id} not found` });
+        return
     }
 
     res.json(post);
