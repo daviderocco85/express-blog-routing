@@ -8,9 +8,16 @@ posts.get('/', (req, res) => {
     res.json(postsList);
 });
 
-// Show dell'articolo con specifico id
+// Show dell'articolo con specifico id recuperato dall'array di oggetti postsList
 posts.get('/:id', (req, res) => {
-    res.send(`Articolo del blog con id: ${req.params.id}`);
+    const id = Number(req.params.id);
+    const post = postsList.find(p => p.id === id);
+
+    if (!post) {
+        return res.status(404).json({ error: `Post ${id} not found` });
+    }
+
+    res.json(post);
 });
 
 // Create 
