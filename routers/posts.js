@@ -15,7 +15,7 @@ posts.get('/:id', (req, res) => {
 
     if (!post) {
         res.status(404).json({ error: `Post ${id} not found` });
-        return
+        return;
     }
 
     res.json(post);
